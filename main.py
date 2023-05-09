@@ -12,12 +12,14 @@ def verifCuv(gramatica, s, cuv):
         return True 
 
     for stare in gramatica[s]:
-        if cuv and cuv[0] == stare[0] and stare[0].islower():
+        if cuv and cuv[0] == stare[0] and stare[0].islower() and len(stare) > 1:
             if verifCuv(gramatica, stare[1], cuv[1:]): #trec la urmatoarea litera mica
                 return True
+        if len(stare) == 1 and stare[0].islower() and len(cuv) == 1 and cuv[0] == stare[0]:
+            return True
     return False
-#        elif aux[0].isupper():
-#               verifCuv(gramatica, aux[0], aux[1] + cuv) #intru pe literele mari
+#        elif stare[0].isupper():
+#               verifCuv(gramatica, stare[0], stare[1] + cuv) #intru pe literele mari
 
 s = 'S'
 ok = 0
